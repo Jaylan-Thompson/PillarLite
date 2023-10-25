@@ -1,0 +1,23 @@
+{
+  "name": "pillar",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "file-loader": "^6.2.0",
+    "gltf-loader": "^1.0.0",
+    "mapbox-gl": "^2.15.0",
+    "next": "13.4.6",
+    "next-compose-plugins": "^2.2.1",
+    "next-transpile-modules": "^10.0.1",
+    "node-fetch": "^3.3.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "three": "^0.157.0"
+  }
+}

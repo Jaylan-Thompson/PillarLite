@@ -1,0 +1,15 @@
+.map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: -8px;
+  z-index: 0;
+}
+
+.custom-marker {
+  width: 50px; /* Set the width of the custom marker */
+  height: 50px; /* Set the height of the custom marker */
+  background-size: cover; /* Adjust the background image size to cover the marker */
+  border-radius: 50%; /* Make the marker circular (optional) */
+  cursor: pointer; /* Set a pointer cursor on hover (optional) */
+}
