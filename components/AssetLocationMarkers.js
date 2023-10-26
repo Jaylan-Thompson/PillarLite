@@ -22,6 +22,7 @@ function AssetLocationMarkers({ map, onMarkerClick }) {
       customMarker.style.width = '10vh';
       customMarker.style.height = '10vh';
       customMarker.style.backgroundSize = 'cover';
+      customMarker.style.zIndex = '1'
       customMarker.style.cursor = 'pointer';
 
       // Add the custom marker to the map
