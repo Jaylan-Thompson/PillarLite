@@ -10,7 +10,7 @@ function AssetView({ assetId, onClose }) {
         // Check if assetId is provided
         if (assetId) {
             // Fetch the list of assets from the API
-            fetch('https://map.pillarword.xyz/api/data')
+            fetch('https://map.pillarworld.xyz/api/data')
                 .then((response) => response.json())
                 .then((data) => {
                     // Find the asset from the list that matches the provided assetId

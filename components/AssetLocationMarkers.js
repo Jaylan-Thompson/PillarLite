@@ -7,7 +7,7 @@ function AssetLocationMarkers({ map, onMarkerClick }) {
 
   useEffect(() => {
     // Fetch data from the API when the component mounts
-    fetch('https://map.pillarword.xyz/api/assetsLocations/all')
+    fetch('https://map.pillarworld.xyz/api/assetsLocations/all')
       .then((response) => response.json())
       .then((responseData) => {
         setData(responseData);
