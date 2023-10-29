@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 function AssetLocationMarkers({ map, onMarkerClick }) {
@@ -7,7 +7,7 @@ function AssetLocationMarkers({ map, onMarkerClick }) {
 
   useEffect(() => {
     // Fetch data from the API when the component mounts
-    fetch('http://34.42.12.234/api/assetsLocations/all')
+    fetch('https://map.pillarword.xyz/api/assetsLocations/all')
       .then((response) => response.json())
       .then((responseData) => {
         setData(responseData);
@@ -19,38 +19,38 @@ function AssetLocationMarkers({ map, onMarkerClick }) {
     markersRef.current.forEach(marker => marker.remove());
     markersRef.current = [];
 
-  // Render markers on the map
-  if (map && data) {
-    data.assetsLocations.forEach((location) => {
-      // Create a custom marker with your image
-      const customMarker = document.createElement('div');
-      customMarker.style.backgroundImage = `url(/images/iconframe.png)`;
-      customMarker.style.width = '10vh';
-      customMarker.style.height = '10vh';
-      customMarker.style.backgroundSize = 'cover';
-      customMarker.style.zIndex = '1'
-      customMarker.style.cursor = 'pointer';
+    // Render markers on the map
+    if (map && data) {
+      data.assetsLocations.forEach((location) => {
+        // Create a custom marker with your image
+        const customMarker = document.createElement('div');
+        customMarker.style.backgroundImage = `url(/images/iconframe.png)`;
+        customMarker.style.width = '10vh';
+        customMarker.style.height = '10vh';
+        customMarker.style.backgroundSize = 'cover';
+        customMarker.style.zIndex = '1'
+        customMarker.style.cursor = 'pointer';
 
-      // Add the custom marker to the map
-      const marker = new mapboxgl.Marker({ element: customMarker })
-        .setLngLat([location.longitude, location.latitude])
-        .addTo(map);
+        // Add the custom marker to the map
+        const marker = new mapboxgl.Marker({ element: customMarker })
+          .setLngLat([location.longitude, location.latitude])
+          .addTo(map);
 
-      // Store the marker in ref for future removal
-      markersRef.current.push(marker);
+        // Store the marker in ref for future removal
+        markersRef.current.push(marker);
 
-      // Extract assetId from the API
-      const assetId = location.assetId;
+        // Extract assetId from the API
+        const assetId = location.assetId;
 
-      // Add a click event listener to trigger AssetView Popup with assetId
-      customMarker.addEventListener('click', () => {
-        onMarkerClick(assetId);
+        // Add a click event listener to trigger AssetView Popup with assetId
+        customMarker.addEventListener('click', () => {
+          onMarkerClick(assetId);
+        });
       });
-    });
-  }
-}, [map, data, onMarkerClick]);
+    }
+  }, [map, data, onMarkerClick]);
 
-return null;
+  return null;
 }
 
 export default AssetLocationMarkers;

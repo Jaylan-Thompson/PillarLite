@@ -10,7 +10,7 @@ function AssetView({ assetId, onClose }) {
         // Check if assetId is provided
         if (assetId) {
             // Fetch the list of assets from the API
-            fetch('http://34.42.12.234/api/data')
+            fetch('https://map.pillarword.xyz/api/data')
                 .then((response) => response.json())
                 .then((data) => {
                     // Find the asset from the list that matches the provided assetId
