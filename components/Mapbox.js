@@ -12,33 +12,37 @@ function MapBox({ setLongitude, setLatitude }) {
   const mapContainer = useRef(null);
   const [map, setMap] = useState(null);
   const [clickedMarkerId, setClickedMarkerId] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Create a new map instance
     const newMap = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/light-v11',
+      style: isDarkMode ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/light-v10',
       center: [-118.37, 34.05],
       zoom: 12,
       pitch: 60,
     });
 
-    // Set map for other components' reference
     setMap(newMap);
-  }, []);
+  }, [isDarkMode]);
 
-  // Handle marker click
   const handleMarkerClick = (id) => {
     setClickedMarkerId(id);
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
 
   return (
-    // Pass props from other components
     <div ref={mapContainer} className={styles.map}>
       {map && <GeolocateControl map={map} setLongitude={setLongitude} setLatitude={setLatitude} />}
       {map && <AssetLocationMarkers map={map} onMarkerClick={handleMarkerClick} />}
       {clickedMarkerId && <AssetView assetId={clickedMarkerId} onClose={() => setClickedMarkerId(null)} />}
+
+      <button className={styles.toggleDarkMode} onClick={toggleDarkMode}>
+        {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+      </button>
     </div>
   );
 }
