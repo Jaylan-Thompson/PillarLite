@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/AssetView.module.css';
 
-function AssetView({ assetId, onClose }) {
+function AssetView({ assetId, onClose, isDarkMode }) { 
     // State to hold the details of the asset fetched from the API
     const [assetData, setAssetData] = useState(null);
 
@@ -32,7 +32,7 @@ function AssetView({ assetId, onClose }) {
 
     // Render the AssetView component with API data
     return (
-        <div className={styles.assetView}>
+        <div className={`${styles.assetView} ${isDarkMode ? styles.assetViewDark : ''}`}>
             <h2>{assetData ? assetData.assetDescription : `Loading...`}</h2>
             <img src={assetData ? assetData.assetThumbnailUrl : "default-thumbnail.png"} alt="Asset Thumbnail" />
             <p>Artist ID: {assetData ? assetData.artistId : "Loading..."}</p>

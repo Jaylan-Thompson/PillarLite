@@ -12,6 +12,11 @@
   z-index: 5;
 }
 
+.assetViewDark {
+  background-color: #191a1a;
+  color: #fff;
+}
+
 .assetView img {
   max-width: 100%;
   height: auto;
