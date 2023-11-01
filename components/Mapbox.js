@@ -49,18 +49,22 @@ function MapBox({ setLongitude, setLatitude }) {
   };
 
   return (
-    // Render elements and pass props from other components
-    <div
-      ref={mapContainer}
-      className={styles.map}
-      style={{ backgroundColor: isDarkMode ? '#343332' : '#f6f6f4' }}
-    >
-      {map && <GeolocateControl map={map} setLongitude={setLongitude} setLatitude={setLatitude} />}
-      {map && <AssetLocationMarkers map={map} onMarkerClick={handleMarkerClick} />}
-      {clickedMarkerId && <AssetView assetId={clickedMarkerId} onClose={() => setClickedMarkerId(null)} isDarkMode={isDarkMode} />}
-      <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-    </div>
-  );
+    <>
+        <div className={styles.fullScreenContainer}>
+            <img src="/images/Pillar.png" alt="Pillar" className={styles.fullScreenImage} />
+        </div>
+        <div
+            ref={mapContainer}
+            className={styles.map}
+            style={{ backgroundColor: isDarkMode ? '#343332' : '#f6f6f4' }}
+        >
+            {map && <GeolocateControl map={map} setLongitude={setLongitude} setLatitude={setLatitude} />}
+            {map && <AssetLocationMarkers map={map} onMarkerClick={handleMarkerClick} />}
+            {clickedMarkerId && <AssetView assetId={clickedMarkerId} onClose={() => setClickedMarkerId(null)} isDarkMode={isDarkMode} />}
+            <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+        </div>
+    </>
+);
 }
 
 export default MapBox;
